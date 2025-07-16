@@ -1,0 +1,45 @@
+{
+  "tests": [
+    {
+      "source_text": "Dr. Smith went to the store. He bought apples, oranges, and bananas.\n\nWho is John A. Curtis? I don't really know, but A. might stand for 'Awesome'.",
+      "expected": [
+        "Dr. Smith went to the store.",
+        "He bought apples, oranges, and bananas.",
+        "Who is John A. Curtis?",
+        "I don't really know, but A. might stand for 'Awesome'."
+      ]
+    },
+    {
+      "source_text": "Wait!!! Is that true? I think it is. But then, consider the alternative: maybe not.",
+      "expected": [
+        "Wait!!! Is that true?",
+        "I think it is.",
+        "But then, consider the alternative: maybe not."
+      ]
+    },
+    {
+      "source_text": "Hello (is anyone there?). It's me, Dr. Johnson e.g. your friend. Actually, I'm not sure anymore...",
+      "expected": [
+        "Hello (is anyone there?).",
+        "It's me, Dr. Johnson e.g. your friend.",
+        "Actually, I'm not sure anymore..."
+      ]
+    },
+    {
+      "source_text": "He exclaimed, \"Wow!\" Then quietly added, \"I didn't see that coming.\" Indeed, it was surprising!",
+      "expected": [
+        "He exclaimed, \"Wow!\"",
+        "Then quietly added, \"I didn't see that coming.\"",
+        "Indeed, it was surprising!"
+      ]
+    },
+    {
+      "source_text": "In 2021, something happened. Yet nobody noticed until later—much later. \"Better late than never,\" they said.",
+      "expected": [
+        "In 2021, something happened.",
+        "Yet nobody noticed until later—much later.",
+        "\"Better late than never,\" they said."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+In the mid-1990s, at Stanford University, two bright Ph.D. students named Larry Page and Sergey Brin embarked on a mission to organize the seemingly infinite information available online. What began as an academic research project quickly evolved into something much larger.
+
+Larry Page was fascinated with how web pages linked to each other. Inspired by citations in scholarly papers, he envisioned a new method for ranking web pages based on their authority. Sergey Brin joined him, and together they created "BackRub," an innovative search algorithm that evaluated the relevance and authority of websites by counting the number and quality of links pointing to them.
+
+The two students soon realized that they had developed something extraordinary—far superior to existing search engines. They renamed their project "Google," a playful reference to "googol," the mathematical term for the number represented by 1 followed by 100 zeros, symbolizing their goal to manage vast amounts of data.
+
+Operating initially from their dorm rooms, then from a rented garage in Menlo Park, California, Larry and Sergey began attracting investors who believed in their vision. In 1998, Google Inc. was officially established. Their minimalist homepage and fast, accurate results quickly gained popularity.
+
+Over the next two decades, Google revolutionized the way people find and access information, becoming synonymous with searching the internet. The company expanded into numerous other technology fields, always guided by the original vision of organizing the world's information and making it universally accessible and useful.
+
+From humble academic beginnings to global technology giant, the story of Google remains an inspiring testament to innovation, curiosity, and perseverance.
