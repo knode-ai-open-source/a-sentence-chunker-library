@@ -14,42 +14,42 @@ WORKDIR /workspace
 RUN git clone \
       https://${GITHUB_TOKEN}@github.com/knode-ai-open-source/a-cmake-library.git \
       /workspace/a-cmake-library && \
-      cd /workspace/a-cmake-library && ./build_install.sh \
+      cd /workspace/a-cmake-library && ./build_install.sh && \
       rm -rf /workspace/a-cmake-library
 
 # the-macro-library
 RUN git clone \
       https://${GITHUB_TOKEN}@github.com/knode-ai-open-source/the-macro-library.git \
       /workspace/the-macro-library && \
-      cd /workspace/the-macro-library && ./build_install.sh \
+      cd /workspace/the-macro-library && ./build_install.sh && \
       rm -rf /workspace/the-macro-library
 
 # a-memory-library
 RUN git clone \
       https://${GITHUB_TOKEN}@github.com/knode-ai-open-source/a-memory-library.git \
       /workspace/a-memory-library && \
-      cd /workspace/a-memory-library && ./build_install.sh \
+      cd /workspace/a-memory-library && ./build_install.sh && \
       rm -rf /workspace/a-memory-library
 
 # the-lz4-library
 RUN git clone \
       https://${GITHUB_TOKEN}@github.com/knode-ai-open-source/the-lz4-library.git \
       /workspace/the-lz4-library && \
-      cd /workspace/the-lz4-library && ./build_install.sh \
+      cd /workspace/the-lz4-library && ./build_install.sh && \
       rm -rf /workspace/the-lz4-library
 
 # the-io-library
 RUN git clone \
       https://${GITHUB_TOKEN}@github.com/knode-ai-open-source/the-io-library.git \
       /workspace/the-io-library && \
-      cd /workspace/the-io-library && ./build_install.sh \
+      cd /workspace/the-io-library && ./build_install.sh && \
       rm -rf /workspace/the-io-library
 
 # a-json-library
 RUN git clone \
       https://${GITHUB_TOKEN}@github.com/knode-ai-open-source/a-json-library.git \
       /workspace/a-json-library && \
-      cd /workspace/a-json-library && ./build_install.sh \
+      cd /workspace/a-json-library && ./build_install.sh && \
       rm -rf /workspace/a-json-library
 
 # Build library
