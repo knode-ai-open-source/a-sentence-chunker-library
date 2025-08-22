@@ -1,5 +1,6 @@
-// SPDX-FileCopyrightText:  2023 Andy Curtis <contactandyc@gmail.com>
+// SPDX-FileCopyrightText: 2025 Andy Curtis <contactandyc@gmail.com>
 // SPDX-License-Identifier: Apache-2.0
+
 #ifndef _a_sentence_chunker_h
 #define _a_sentence_chunker_h
 

@@ -1,18 +1,59 @@
-# SPDX-FileCopyrightText: 2024-2025 Knode.ai
+# SPDX-FileCopyrightText: 2025 Andy Curtis <contactandyc@gmail.com>
 # SPDX-License-Identifier: Apache-2.0
-# Maintainer: Andy Curtis <contactandyc@gmail.com>
-cmake_minimum_required(VERSION 3.10)
-project(a_sentence_chunker_library_example VERSION 1.0)
 
-# Enable testing
+# CMakeLists.txt for tests
+cmake_minimum_required(VERSION 3.20)
+
+project(a_sentence_chunker_library_tests LANGUAGES C)
+
+set(A_BUILD_VARIANT "debug" CACHE STRING
+    "Variant to link via a_sentence_chunker_library::a_sentence_chunker_library (debug|memory|static|shared)")
+set_property(CACHE A_BUILD_VARIANT PROPERTY STRINGS debug memory static shared)
+
+option(A_ENABLE_COVERAGE "Enable code coverage instrumentation" OFF)
+
+find_library(M_LIB m)
+
+# ---- Test executables ----
+set(TEST_EXECUTABLES "")
+
 enable_testing()
 
-# Set the directory for test sources
-set(TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/chunker.c)
+# ---- Coverage aggregation ----
+add_custom_target(coverage_report COMMENT "Generate coverage report")
 
-set(CUSTOM_PACKAGES a-sentence-chunker-library a-json-library a-memory-library the-macro-library the-lz4-library the-io-library)
-set(THIRD_PARTY_PACKAGES ZLIB)
+if(A_ENABLE_COVERAGE AND CMAKE_C_COMPILER_ID MATCHES "Clang")
+  include(ProcessorCount)
+  ProcessorCount(NPROC)
+  if(NPROC EQUAL 0)
+    set(NPROC 4)
+  endif()
 
-find_package(a-cmake-library REQUIRED)
+  add_custom_command(TARGET coverage_report PRE_BUILD
+    COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure -j ${NPROC}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    COMMENT "Running tests with coverage instrumentation"
+  )
 
-include(BinaryConfig)
+  find_program(LLVM_PROFDATA_EXECUTABLE llvm-profdata)
+  find_program(LLVM_COV_EXECUTABLE llvm-cov)
+  if(LLVM_PROFDATA_EXECUTABLE AND LLVM_COV_EXECUTABLE)
+    add_custom_command(TARGET coverage_report POST_BUILD
+      COMMAND ${LLVM_PROFDATA_EXECUTABLE} merge -sparse *.profraw -o default.profdata
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      COMMENT "Merging coverage data"
+    )
+
+    # Normal compiled library path
+    add_custom_command(TARGET coverage_report POST_BUILD
+      COMMAND ${LLVM_COV_EXECUTABLE} show
+              ../liba_sentence_chunker_library_${A_BUILD_VARIANT}.a
+              -instr-profile=default.profdata
+              -format=html -output-dir=coverage_html
+              --ignore-filename-regex='/usr/.*'
+              --show-regions --show-line-counts-or-regions
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      COMMENT "Generated LLVM coverage report → open coverage_html/index.html"
+    )
+  endif()
+endif()
